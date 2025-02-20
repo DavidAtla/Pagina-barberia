@@ -1,0 +1,43 @@
+// app global css in SCSS form
+.container {
+  // ** NO EDITAR** Haz tu propio container
+  min-height: 30vh;
+}
+.q-page-container {
+  padding-top: 0 !important;
+}
+.padding-por-header {
+  padding-top: 180px; // 150px es el tamaño del logo + 20 de padding
+}
+.fondo-imagen-1 {
+  background-image: url('assets/background-images/barberia.jpg');
+  background-size: 100%;
+  min-height: 800px; //largo
+  background-position: bottom;
+}
+.fondo-imagen-2 {
+  background-image: url('assets/background-images/barberia.jpg');
+  background-size: 100%;
+  background-position: bottom;
+}
+.text-6 {
+  font-family: 'Alfa Slab One Regular';
+  font-weight: 300;
+  color: #ffffff; /* Cambia el color del texto (ajusta el valor según tus necesidades) */
+  text-align: center; /* Centra el texto horizontalmente */
+  position: relative;
+  top: 90px; /* Ajusta la posición superior según sea necesario */
+}
+//MENÚ
+.logo {
+  height: 50px;
+}
+
+.bg-white {
+  background-color: #ffffff !important; /* Se cambia el color de fondo a blanco */
+}
+
+.text-black {
+  color: #000000 !important; /* Se cambia el color del texto a negro */
+}
+//MENÚ//
