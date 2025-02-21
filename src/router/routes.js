@@ -9,21 +9,7 @@ const routes = [
         name: 'nuestros-cursos',
         component: () => import('pages/NuestrosCursosPage.vue'),
       },
-      {
-        path: 'academy',
-        name: 'academy',
-        component: () => import('pages/AcademyPage.vue'),
-      },
-      {
-        path: 'testimonios',
-        name: 'testimonios',
-        component: () => import('pages/TestimonioPage.vue'),
-      },
-      {
-        path: 'contacto',
-        name: 'contacto',
-        component: () => import('pages/ContactosPage.vue'),
-      },
+
     ],
   },
 
