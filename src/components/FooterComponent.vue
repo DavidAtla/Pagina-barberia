@@ -21,15 +21,6 @@
             </q-item-section>
           </q-item>
         </div>
-        <!-- Términos y Condiciones -->
-        <div class="Terminos">
-          <q-btn
-            flat
-            label="Términos y Condiciones"
-            @click="openTermsAndConditions"
-            class="text-weight-bold"
-          />
-        </div>
 
         <!-- Redes Sociales -->
         <div class="col-auto text-center flex items-center">
@@ -50,20 +41,19 @@
             <a href="https://www.tiktok.com/@academyhouseofshaves" target="_blank">
               <img src="src/assets/background-images/LogoTiktok.png" width="32px" height="32px" />
             </a>
+            <a href="https://wa.me/525642439821" target="_blank">
+              <img src="src/assets/background-images/LogoWhatsApp.png" width="30px" height="30px" />
+            </a>
+            <q-item-section>
+              <q-item-label class="text-black text-bold"> 56 4243 9821 </q-item-label>
+            </q-item-section>
           </div>
         </div>
 
         <!-- WhatsApp -->
         <div class="col-auto flex items-center">
           <q-item dense class="flex items-center">
-            <q-item-section avatar>
-              <a href="https://wa.me/522216007231" target="_blank">
-        <img src="src/assets/background-images/LogoWhatsApp.png" width="30px" height="30px" />
-      </a>
-             </q-item-section>
-            <q-item-section>
-              <q-item-label class="text-black text-bold"> 2216007231 </q-item-label>
-            </q-item-section>
+            <!--Para agregar otra cosa-->
           </q-item>
         </div>
       </div>
