@@ -1,7 +1,8 @@
 <template>
   <q-page class="full-width">
     <div class="q-pa-md fondo-imagen-1 container padding-por-header">
-      <h2 class="text-6">GET YOUR STYLE YOU DESERVE</h2>
+      <h2 class="text-6">GET YOUR STYLE<br />YOU DESERVE</h2>
+      <h2 class="text-h6">STAY SHARP . LOOK GOO</h2>
     </div>
 
     <NuestrosCursosComponent />
