@@ -1,9 +1,9 @@
 {
-  "name": "barbershop-website",
+  "name": "pagina-barberia",
   "version": "0.0.1",
   "description": "A Quasar Project",
-  "productName": "Barbershop website",
-  "author": "Isai Landa <isailandao@hotmail.com>",
+  "productName": "Pagina",
+  "author": "David <davidatlmar@gmail.com>",
   "type": "module",
   "private": true,
   "scripts": {
