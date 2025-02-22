@@ -15,8 +15,19 @@
   min-height: 750px; //largo
   background-position: bottom;
 }
-.fondo-imagen-2 {
-  src: '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1543.0170231434918!2d-98.20136122377744!3d19.02756451731722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc1000eb3f76d%3A0x6fa14040b8a1bb1!2sAcademy%20House%20of%20Shaves%20Barbershop%20%26%20Raffaelo!5e1!3m2!1ses-419!2smx!4v1740152837077!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"';
+.Contenedor {
+  // primera imagen
+  background-repeat: no-repeat;
+  position: relative;
+  left: 100px;
+  font-family: 'Alfa Slab One Regular';
+  font-weight: bold;
+  font-size: 100px;
+}
+.botonver {
+  background: rgb(191, 149, 109);
+  color: white;
+  width: 150px;
 }
 .text-6 {
   font-family: 'Alfa Slab One Regular';
