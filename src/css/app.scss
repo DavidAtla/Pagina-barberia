@@ -47,3 +47,114 @@
   color: #000000 !important; /* Se cambia el color del texto a negro */
 }
 //MENÚ//
+
+/* Estilos generales */
+.bg-beige {
+  background-color: #f5f5dc !important; /* Color beige claro de fondo */
+}
+
+.text-black {
+  color: #000000 !important;
+}
+
+.logo {
+  height: 60px; /* Aumentar tamaño del logo */
+}
+
+/* Alinear el logo dentro de la barra de menú */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Hace que el logo ocupe el espacio disponible */
+}
+
+/* Estilo del botón de menú */
+.menu-btn {
+  margin-right: 20px;
+  display: flex;
+  font-size: 1.2rem; /* Aumentar tamaño del icono (más grande) */
+}
+
+/* Estilos de la barra superior */
+.toolbar {
+  min-height: 80px; /* Aumentar la altura de la barra */
+  display: flex;
+  align-items: center; /* Asegura que los elementos estén alineados verticalmente */
+}
+
+/* Aumentar el tamaño de las pestañas y botones */
+.tabs .q-tab {
+  font-size: 1.2rem; /* Aumentar el tamaño de la fuente */
+  padding: 12px 16px; /* Aumentar el tamaño de las pestañas */
+  letter-spacing: 0.1rem; /* Separar las letras */
+}
+
+/* Modo móvil: Solo mostrar menú y logo */
+@media (max-width: 600px) {
+  .desktop-only {
+    display: none !important; /* Ocultar el menú y los iconos en móvil */
+  }
+
+  .logo-container {
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Ajustes del menú lateral en móvil */
+  .q-drawer {
+    width: 80%; /* Aumentar el ancho del menú lateral en móvil */
+  }
+}
+
+/* Estilos del formulario de cita */
+.appointment-form {
+  background-color: #f5f5dc; /* Fondo beige claro */
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 30px; /* Añadido margen superior para separar la imagen */
+}
+
+.form-card {
+  width: 100%;
+  max-width: 700px; /* Ajustar el tamaño de la tarjeta del formulario */
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Contenedor de cada fila */
+.form-row {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Cada campo ocupa el 48% del ancho */
+.field {
+  width: 48%;
+}
+
+/* El campo de mensaje ocupa el 100% del ancho */
+.field-message {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Estilo de la imagen de la silla de barbero */
+.barber-chair {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.barber-chair img {
+  max-width: 100%;
+  height: auto;
+}

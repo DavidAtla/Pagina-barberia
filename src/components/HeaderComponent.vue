@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Barra superior con opciones de navegación -->
-    <q-header elevated class="bg-white text-black header">
+    <q-header elevated class="bg-beige text-black header">
       <q-toolbar class="toolbar">
         <!-- Botón de menú (siempre visible en móvil y escritorio) -->
         <q-btn
@@ -58,6 +58,37 @@
         </q-item>
       </q-list>
     </q-drawer>
+
+    <div class="main-content">
+      <!-- Formulario de Cita con imagen de fondo -->
+      <div class="appointment-form">
+        <q-card flat bordered class="form-card">
+          <q-card-section>
+            <div class="form-title">HACER UNA CITA</div>
+            <q-form class="q-pa-md">
+              <!-- Primera fila: Nombre y Correo Electrónico -->
+              <div class="form-row">
+                <q-input label="Nombre" filled class="field" />
+                <q-input label="Correo Electrónico" type="email" filled class="field" />
+              </div>
+
+              <!-- Segunda fila: Teléfono y Fecha -->
+              <div class="form-row">
+                <q-input label="Teléfono" type="tel" filled class="field" />
+                <q-input label="Fecha" type="date" filled class="field" />
+              </div>
+
+              <!-- Campo de mensaje (última fila) -->
+              <q-input label="Mensaje" type="textarea" filled class="field-message" />
+
+              <div class="q-mt-md">
+                <q-btn label="HACER UNA CITA" color="primary" />
+              </div>
+            </q-form>
+          </q-card-section>
+        </q-card>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -82,63 +113,36 @@ export default {
 }
 </script>
 
-<style scoped>
-/* Estilos generales */
-.logo {
-  height: 60px; /* Aumentar tamaño del logo */
-}
-
-.bg-white {
-  background-color: #ffffff !important;
-}
-
-.text-black {
-  color: #000000 !important;
-}
-
-/* Alinear el logo dentro de la barra de menú */
-.logo-container {
+<style>
+/* Estilos para el contenido principal, imagen y formulario */
+.main-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-grow: 1; /* Hace que el logo ocupe el espacio disponible */
+  padding: 20px;
 }
 
-/* Estilo del botón de menú */
-.menu-btn {
-  margin-right: 20px;
-  display: flex;
-  font-size: 1.2rem; /* Aumentar tamaño del icono (más grande) */
+/* Imagen de fondo para el formulario de cita */
+.appointment-form {
+  background-image: url('src/assets/background-images/LogoSilla.jpeg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+  max-width: 80%; /* Ajusta el tamaño del formulario según tus necesidades */
 }
 
-/* Estilos de la barra superior */
-.toolbar {
-  min-height: 80px; /* Aumentar la altura de la barra */
-  display: flex;
-  align-items: center; /* Asegura que los elementos estén alineados verticalmente */
+.form-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
 }
 
-/* Aumentar el tamaño de las pestañas y botones */
-.tabs .q-tab {
-  font-size: 1.2rem; /* Aumentar el tamaño de la fuente */
-  padding: 12px 16px; /* Aumentar el tamaño de las pestañas */
-  letter-spacing: 0.1rem; /* Separar las letras */
-}
-
-/* Modo móvil: Solo mostrar menú y logo */
-@media (max-width: 600px) {
-  .desktop-only {
-    display: none !important; /* Ocultar el menú y los iconos en móvil */
-  }
-
-  .logo-container {
-    text-align: center;
-    width: 100%;
-  }
-
-  /* Ajustes del menú lateral en móvil */
-  .q-drawer {
-    width: 80%; /* Aumentar el ancho del menú lateral en móvil */
-  }
+.field,
+.field-message {
+  margin-bottom: 16px;
 }
 </style>
