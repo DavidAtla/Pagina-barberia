@@ -102,6 +102,7 @@
         </div>
       </q-page>
       <!--Final-->
+      <!-- Tercela -->
       <div class="contenedor-curso">
         <h2 class="text-h4">MASTER BARBER</h2>
         <div class="borde-rojo q-pa-md">
@@ -111,17 +112,36 @@
           </center>
         </div>
       </div>
-      <div class="col-md-6 col-12">
-        <div class="contenedor-curso">
-          <h2 class="text-h4">MASTER BARBER</h2>
-          <div class="borde-rojo q-pa-md">
-            <center>
-              Este esquema está diseñado para que aprendas desde cero y alcances la especialidad,
-              siendo capaz de potenciar tu trabajo.
-            </center>
+      <!--Final-->
+      <!-- Cuarto -->
+      <q-page class="q-pa-md flex flex-center page-background">
+        <div class="q-gutter-md">
+          <h2 class="text-center title-font">NUESTROS PRODUCTOS</h2>
+          <p class="text-center subtitle-font">Ofrecemos diferentes productos de calidad</p>
+
+          <q-list class="Ancho row justify-center">
+            <q-card
+              v-for="product in products"
+              :key="product.name"
+              class="q-ma-md col-xs-12 col-sm-6 col-md-2"
+            >
+              <q-img :src="product.image" class="product-image" />
+              <q-card-section>
+                <div class="text-h6 text-center">{{ product.name }}</div>
+                <div class="text-center text-grey">${{ product.price }}</div>
+              </q-card-section>
+              <q-card-actions align="center">
+                <q-btn color="brown" label="Comprar" />
+              </q-card-actions>
+            </q-card>
+          </q-list>
+
+          <div class="text-center q-mt-md">
+            <q-btn color="brown" label="IR AL CARITO" />
           </div>
         </div>
-      </div>
+      </q-page>
+      <!--Final-->
       <div class="col-md-6 col-12">
         <div class="contenedor-curso">
           <h2 class="text-h4">MASTER BARBER</h2>
@@ -139,13 +159,32 @@
 
 <script>
 export default {
-  name: 'NuestrosCursosComponent',
-
   data() {
     return {
-      slide: '1',
+      products: [
+        {
+          name: 'TIJERAS DE BARBERO',
+          price: 20.0,
+          image: 'src/assets/background-images/Tijeras.png',
+        },
+        {
+          name: 'BROCHAS DE AFEITAR',
+          price: 25.0,
+          image: 'src/assets/background-images/Shaving-Brushs.png',
+        },
+        {
+          name: 'NAVAJAS DE AFEITAR',
+          price: 35.0,
+          image: 'src/assets/background-images/Navaja de afeitar.png',
+        },
+        {
+          name: 'PEINES DE BARBERO PROFESIONAL',
+          price: 12.0,
+          image: 'src/assets/background-images/Peine.png',
+        },
+      ],
     }
   },
 }
 </script>
-<style></style>
+<style scoped></style>

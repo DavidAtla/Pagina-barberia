@@ -51,7 +51,7 @@
 }
 
 .bg-white {
-  background-color: #edcbaa !important; /* Se cambia el color de fondo a blanco */
+  background-color: #f5f5dc !important; /* Se cambia el color de fondo a blanco */
 }
 
 .text-black {
@@ -138,3 +138,27 @@
   padding: 1rem; /* Espaciado interno para separar el contenido del borde */
 }
 //Final
+//Pagina 4
+.page-background {
+  background-color: #ffeed6; /* Café claro */
+}
+.product-image {
+  height: 220px;
+  width: 236px;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.carousel-container {
+  max-width: 900px;
+  margin: auto;
+}
+.title-font {
+  font-family: 'Alfa Slab One Regular';
+}
+
+.subtitle-font {
+  font-family: 'Roboto';
+}
+//fin
