@@ -6,7 +6,7 @@
         <div class="col-auto flex items-center">
           <q-item dense class="flex items-center">
             <q-item-section avatar>
-              <a href="https://maps.app.goo.gl/ectfk6P3kEp9EieX8" target="_blank">
+              <a href="https://maps.app.goo.gl/kM2H2keAbPh9AzRy5" target="_blank">
                 <img
                   src="src/assets/background-images/LogoUbicacion.png"
                   width="30px"
@@ -16,7 +16,7 @@
             </q-item-section>
             <q-item-section>
               <q-item-label class="text-black text-bold">
-                C.8 Sur 3508-Local 2D, Anzures, 72530 Heroica Puebla de Zaragoza, Pue
+                Calle Mira Número 213, local 2, San Andrés Cholula, Mexico
               </q-item-label>
             </q-item-section>
           </q-item>

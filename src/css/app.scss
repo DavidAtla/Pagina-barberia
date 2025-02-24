@@ -15,8 +15,19 @@
   min-height: 750px; //largo
   background-position: bottom;
 }
-.fondo-imagen-2 {
-  src: '"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1543.0170231434918!2d-98.20136122377744!3d19.02756451731722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc1000eb3f76d%3A0x6fa14040b8a1bb1!2sAcademy%20House%20of%20Shaves%20Barbershop%20%26%20Raffaelo!5e1!3m2!1ses-419!2smx!4v1740152837077!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"';
+.Contenedor {
+  // primera imagen
+  background-repeat: no-repeat;
+  position: relative;
+  left: 100px;
+  font-family: 'Alfa Slab One Regular';
+  font-weight: bold;
+  font-size: 100px;
+}
+.botonver {
+  background: rgb(191, 149, 109);
+  color: white;
+  width: 150px;
 }
 .text-6 {
   font-family: 'Alfa Slab One Regular';
@@ -40,10 +51,90 @@
 }
 
 .bg-white {
-  background-color: #ffffff !important; /* Se cambia el color de fondo a blanco */
+  background-color: #edcbaa !important; /* Se cambia el color de fondo a blanco */
 }
 
 .text-black {
   color: #000000 !important; /* Se cambia el color del texto a negro */
 }
 //MENÚ//
+.contenedor-detalles-curso {
+  border: 5px solid rgba(191, 149, 109);
+  border-radius: 30px;
+  max-width: 400px;
+  margin: 0 auto;
+
+  .text-h4 {
+    text-align: center;
+    background: rgb(191, 149, 109);
+    font-family: 'Alfa Slab One Regular';
+    border-radius: 20px;
+    height: 70px;
+    color: white;
+  }
+  .text-h3 {
+    font-family: 'Alfa Slab One Regular';
+    font-size: 20px;
+  }
+  .boton {
+    font-family: 'Alfa Slab One Regular';
+    background: rgb(191, 149, 109);
+    left: 100px;
+    color: white;
+  }
+}
+.FondoMenu {
+  background-image: url('src/assets/background-images/Menu.jpg');
+  background-size: 100%;
+  min-height: auto; //largo
+  background-position: bottom;
+}
+.text-h7 {
+  text-align: center;
+  font-family: 'Alfa Slab One Regular';
+  border-radius: 20px;
+  height: 70px;
+  color: rgb(0, 0, 0);
+}
+//Primera Pagina
+.q-img {
+  height: 560px;
+  width: 100%;
+  border-radius: 20px;
+}
+.q-card {
+  max-width: 920px;
+  height: 560px;
+  border-radius: 20px;
+}
+//Final
+//segunda pagina
+.page-bg {
+  background-image: url('src/assets/background-images/Menu.jpg'); //Imagen de fondo de la segunda pagina
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.bg-transparent {
+  background-color: transparent !important; //Color transparente
+}
+.logo-image {
+  max-width: 90px; //tamaño de la imagen
+  display: block;
+  margin: 0 auto;
+}
+.custom-title {
+  color: #fff; /* Color blanco */
+  font-size: 45px; /* Tamaño de letra 15px */
+  font-weight: bold; /* Opcional, para destacar el título */
+}
+.descripcion {
+  font-family: 'Alfa Slab One Regular'; /* Ejemplo: Fuente Courier New */
+  font-size: 16px; /* Tamaño de letra 15px */
+}
+.border-light-brown {
+  border: 3px solid #d2b48c; /* Color café claro (tan) */
+  border-radius: 10px; /* Bordes redondeados opcionales */
+  padding: 1rem; /* Espaciado interno para separar el contenido del borde */
+}
+//Final
