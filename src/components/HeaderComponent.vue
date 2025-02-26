@@ -12,17 +12,43 @@
             </q-toolbar-title>
 
             <q-tabs align="right" class="q-pa-sm">
-              <q-tab label="INICIO" />
+              <q-tab label="INICIO" @click="scrollToSection('inicio')" />
               <q-tab label="NOSOTROS" />
               <q-tab label="SERVICIOS" />
-              <q-tab label="GALERÍA" />
               <q-tab label="PRODUCTOS" />
-              <q-tab label="CITA" />
+              <q-tab label="GALERÍA" />
+              <q-tab label="HORARIOS Y CITAS" />
             </q-tabs>
 
             <q-space />
 
-            <q-btn flat icon="search" aria-label="Buscar" />
+            <!-- Botón de búsqueda -->
+            <q-btn flat icon="search" aria-label="Buscar" @click="toggleSearch" />
+
+            <!-- Input de búsqueda y resultados -->
+            <div v-if="showSearch" class="search-container">
+              <q-input
+                v-model="searchQuery"
+                dense
+                outlined
+                placeholder="Buscar..."
+                class="q-ml-md"
+                debounce="300"
+                @update:model-value="highlightResults"
+              />
+
+              <q-list v-if="filteredResults.length > 0" class="search-results">
+                <q-item
+                  v-for="(result, index) in filteredResults"
+                  :key="index"
+                  clickable
+                  @click="scrollToElement(result)"
+                >
+                  <q-item-section>{{ result }}</q-item-section>
+                </q-item>
+              </q-list>
+            </div>
+
             <q-btn flat icon="shopping_cart" aria-label="Carrito" />
           </q-toolbar>
         </q-header>
@@ -30,12 +56,90 @@
     </q-toolbar>
   </q-header>
 </template>
+
 <script>
 export default {
   name: 'HeaderComponent',
+  data() {
+    return {
+      showSearch: false,
+      searchQuery: '',
+      pageElements: [], // Elementos extraídos del DOM
+    }
+  },
+  computed: {
+    filteredResults() {
+      if (!this.searchQuery.trim()) return []
+      return this.pageElements.filter((text) =>
+        text.toLowerCase().includes(this.searchQuery.toLowerCase()),
+      )
+    },
+  },
+  methods: {
+    toggleSearch() {
+      this.showSearch = !this.showSearch
+      if (!this.showSearch) {
+        this.searchQuery = ''
+        this.clearHighlights()
+      }
+    },
+    highlightResults() {
+      this.clearHighlights()
+      if (!this.searchQuery.trim()) return
+
+      document.querySelectorAll('[data-search-highlight]').forEach((el) => {
+        el.style.backgroundColor = ''
+        el.removeAttribute('data-search-highlight')
+      })
+
+      this.pageElements.forEach((text) => {
+        if (text.toLowerCase().includes(this.searchQuery.toLowerCase())) {
+          const elements = [...document.querySelectorAll('h1, h2, h3, p, span, li, a')].filter(
+            (el) => el.textContent.toLowerCase().includes(this.searchQuery.toLowerCase()),
+          )
+          elements.forEach((el) => {
+            el.style.backgroundColor = '#D2B48C' // Resaltar coincidencias
+            el.setAttribute('data-search-highlight', 'true')
+          })
+        }
+      })
+    },
+    clearHighlights() {
+      document.querySelectorAll('[data-search-highlight]').forEach((el) => {
+        el.style.backgroundColor = ''
+        el.removeAttribute('data-search-highlight')
+      })
+    },
+    scrollToElement(text) {
+      const element = [...document.querySelectorAll('h1, h2, h3, p, span, li, a')].find((el) =>
+        el.textContent.toLowerCase().includes(text.toLowerCase()),
+      )
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+    },
+    scanPageContent() {
+      this.pageElements = [...document.querySelectorAll('h1, h2, h3, p, span, li, a')]
+        .map((el) => el.textContent.trim())
+        .filter((text) => text)
+    },
+  },
+  mounted() {
+    this.scanPageContent() // Escanear contenido al cargar
+  },
 }
 </script>
 
 <style scoped>
-/* Add any component-specific styles here */
+.search-container {
+  position: relative;
+}
+
+.search-results {
+  position: absolute;
+  background: white;
+  width: 100%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
 </style>

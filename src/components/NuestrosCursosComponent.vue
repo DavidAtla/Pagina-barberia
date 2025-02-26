@@ -102,17 +102,6 @@
         </div>
       </q-page>
       <!--Final-->
-      <!-- Tercela -->
-      <div class="contenedor-curso">
-        <h2 class="text-h4">Contactos</h2>
-        <div class="borde-rojo q-pa-md">
-          <center>
-            Este esquema está diseñado para que aprendas desde cero y alcances la especialidad,
-            siendo capaz de potenciar tu trabajo.
-          </center>
-        </div>
-      </div>
-      <!--Final-->
       <!-- Cuarto -->
       <q-page class="q-pa-md flex flex-center page-background">
         <div class="q-gutter-md">
