@@ -104,7 +104,7 @@
       <!--Final-->
       <!-- Tercela -->
       <div class="contenedor-curso">
-        <h2 class="text-h4">MASTER BARBER</h2>
+        <h2 class="text-h4">Contactos</h2>
         <div class="borde-rojo q-pa-md">
           <center>
             Este esquema está diseñado para que aprendas desde cero y alcances la especialidad,
@@ -142,17 +142,262 @@
         </div>
       </q-page>
       <!--Final-->
-      <div class="col-md-6 col-12">
-        <div class="contenedor-curso">
-          <h2 class="text-h4">MASTER BARBER</h2>
-          <div class="borde-rojo q-pa-md">
-            <center>
-              Este esquema está diseñado para que aprendas desde cero y alcances la especialidad,
-              siendo capaz de potenciar tu trabajo.
-            </center>
-          </div>
-        </div>
+      <!--Quinto-->
+      <div>
+        <q-tabs v-model="tab" dense>
+          <q-tab name="tab1" label="Pestaña 1"></q-tab>
+          <q-tab name="tab2" label="Pestaña 2"></q-tab>
+          <q-tab name="tab3" label="Pestaña 3"></q-tab>
+        </q-tabs>
+
+        <q-tab-panels v-model="tab" animated>
+          <q-tab-panel name="tab1">
+            <q-row class="q-gutter-md q-mt-md">
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+            </q-row>
+          </q-tab-panel>
+          <q-tab-panel name="tab2">
+            <q-row class="q-gutter-md q-mt-md">
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+            </q-row>
+          </q-tab-panel>
+          <q-tab-panel name="tab2">
+            <q-row class="q-gutter-md q-mt-md">
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+            </q-row>
+          </q-tab-panel>
+          <q-tab-panel name="tab2">
+            <q-row class="q-gutter-md q-mt-md">
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+            </q-row>
+          </q-tab-panel>
+          <q-tab-panel name="tab3">
+            <q-row class="q-gutter-md q-mt-md">
+              <q-col cols="6" xs="12">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+            </q-row>
+          </q-tab-panel>
+          <q-tab-panel name="tab2">
+            <q-row class="q-gutter-md q-mt-md">
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+              <q-col cols="12" xs="6">
+                <q-img
+                  src="src/assets/background-images/Peine.png"
+                  style="width: 250px; height: 250px"
+                />
+              </q-col>
+            </q-row>
+          </q-tab-panel>
+        </q-tab-panels>
       </div>
+      <!--Final-->
+      <!--Sexto-->
+      <q-layout view="hHh lpR fFf">
+        <q-page-container>
+          <q-page class="flex flex-center text-white q-pa-md background">
+            <div class="text-center">
+              <h3 class="text-bold">NUESTROS HORARIOS DE ATENCION</h3>
+              <p>
+                <q-btn
+                  class="boton"
+                  href="https://wa.me/c/5212216007231"
+                  label="CONTACTANOS POR WHATSAPP "
+                >
+                  <img
+                    src="src/assets/background-images/what.png"
+                    width="30px"
+                    height="30px"
+                    style="margin-left: 10px"
+                  />
+                </q-btn>
+              </p>
+
+              <div class="row justify-center q-mt-md">
+                <q-card
+                  v-for="(day, index) in workingHours"
+                  :key="index"
+                  class="day-card q-ma-sm q-pa-md text-center bg-grey-9 text-white BorderHora"
+                  bordered
+                >
+                  <div class="text-bold text-h6">{{ day.day }}</div>
+                  <div class="text-subtitle1">{{ day.hours }}</div>
+                </q-card>
+              </div>
+
+              <h4 class="q-mt-md">DOMINGO : CERRADO</h4>
+              <p class="text-bold q-mt-md text-h6">20% DE DESCUENTO EN TU PRIMER CORTE</p>
+            </div>
+          </q-page>
+        </q-page-container>
+      </q-layout>
+      <!--Final-->
     </div>
   </div>
 </template>
@@ -161,6 +406,7 @@
 export default {
   data() {
     return {
+      tab: 'tab1',
       products: [
         {
           name: 'TIJERAS DE BARBERO',
@@ -182,6 +428,14 @@ export default {
           price: 12.0,
           image: 'src/assets/background-images/Peine.png',
         },
+      ],
+      workingHours: [
+        { day: 'LUNES', hours: '6:00 AM - 6:30 PM' },
+        { day: 'MARTES', hours: '6:00 AM - 6:30 PM' },
+        { day: 'MIERCOLES', hours: '6:00 AM - 6:30 PM' },
+        { day: 'JUEVES', hours: '6:00 AM - 6:30 PM' },
+        { day: 'VIERNES', hours: '6:00 AM - 6:30 PM' },
+        { day: 'SABADO', hours: '6:00 AM - 6:30 PM' },
       ],
     }
   },

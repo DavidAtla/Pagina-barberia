@@ -162,3 +162,16 @@
   font-family: 'Roboto';
 }
 //fin
+.day-card {
+  width: 190px;
+  border: 2px solid rgb(234, 204, 146);
+  height: 170px;
+  padding: 20px;
+  background-color: #424242;
+}
+.background {
+  background-image: url('src/assets/background-images/Horarios.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
