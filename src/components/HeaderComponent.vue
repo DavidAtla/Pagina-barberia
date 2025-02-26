@@ -13,11 +13,11 @@
 
             <q-tabs align="right" class="q-pa-sm">
               <q-tab label="INICIO" @click="scrollToSection('inicio')" />
-              <q-tab label="NOSOTROS" />
-              <q-tab label="SERVICIOS" />
-              <q-tab label="PRODUCTOS" />
-              <q-tab label="GALERÍA" />
-              <q-tab label="HORARIOS Y CITAS" />
+              <q-tab label="NOSOTROS" @click="scrollToSection('Nosotros')" />
+              <q-tab label="SERVICIOS" @click="scrollToSection('Servicios')" />
+              <q-tab label="PRODUCTOS" @click="scrollToSection('Productos')" />
+              <q-tab label="GALERÍA" @click="scrollToSection('Galeria')" />
+              <q-tab label="HORARIOS Y CITAS" @click="scrollToSection('Horarios')" />
             </q-tabs>
 
             <q-space />
@@ -76,6 +76,7 @@ export default {
     },
   },
   methods: {
+    // Alternar la visibilidad de la barra de búsqueda
     toggleSearch() {
       this.showSearch = !this.showSearch
       if (!this.showSearch) {
@@ -83,6 +84,8 @@ export default {
         this.clearHighlights()
       }
     },
+
+    // Resaltar resultados de búsqueda
     highlightResults() {
       this.clearHighlights()
       if (!this.searchQuery.trim()) return
@@ -104,12 +107,16 @@ export default {
         }
       })
     },
+
+    // Limpiar los resaltados de búsqueda
     clearHighlights() {
       document.querySelectorAll('[data-search-highlight]').forEach((el) => {
         el.style.backgroundColor = ''
         el.removeAttribute('data-search-highlight')
       })
     },
+
+    // Desplazar a un elemento específico de la búsqueda
     scrollToElement(text) {
       const element = [...document.querySelectorAll('h1, h2, h3, p, span, li, a')].find((el) =>
         el.textContent.toLowerCase().includes(text.toLowerCase()),
@@ -118,6 +125,16 @@ export default {
         element.scrollIntoView({ behavior: 'smooth', block: 'center' })
       }
     },
+
+    // Desplazar a una sección específica usando su ID
+    scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId)
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' })
+      }
+    },
+
+    // Escanear el contenido de la página para extraer los textos
     scanPageContent() {
       this.pageElements = [...document.querySelectorAll('h1, h2, h3, p, span, li, a')]
         .map((el) => el.textContent.trim())
@@ -125,7 +142,7 @@ export default {
     },
   },
   mounted() {
-    this.scanPageContent() // Escanear contenido al cargar
+    this.scanPageContent() // Escanear el contenido de la página al cargar
   },
 }
 </script>
