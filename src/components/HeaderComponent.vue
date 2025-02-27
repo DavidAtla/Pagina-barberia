@@ -97,9 +97,9 @@ export default {
 
       this.pageElements.forEach((text) => {
         if (text.toLowerCase().includes(this.searchQuery.toLowerCase())) {
-          const elements = [...document.querySelectorAll('h1, h2, h3, p, span, li, a')].filter(
-            (el) => el.textContent.toLowerCase().includes(this.searchQuery.toLowerCase()),
-          )
+          const elements = [
+            ...document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, li, a'),
+          ].filter((el) => el.textContent.toLowerCase().includes(this.searchQuery.toLowerCase()))
           elements.forEach((el) => {
             el.style.backgroundColor = '#D2B48C' // Resaltar coincidencias
             el.setAttribute('data-search-highlight', 'true')

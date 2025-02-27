@@ -12,7 +12,7 @@
 .fondo-imagen-1 {
   background-image: url('assets/background-images/barberia.jpg');
   background-size: 100%;
-  min-height: 750px; //largo
+  min-height: 790px; //largo
   background-position: bottom;
 }
 .Contenedor {
@@ -44,6 +44,9 @@
   text-align: center; /* Centra el texto horizontalmente */
   position: relative;
   top: 0px; /* Ajusta la posición superior según sea necesario */
+}
+.text-body2 {
+  top: 1000px; /* Ajusta la posición superior según sea necesario */
 }
 //MENÚ
 .logo {
@@ -125,7 +128,7 @@
 }
 .custom-title {
   color: #fff; /* Color blanco */
-  font-size: 45px; /* Tamaño de letra 15px */
+  font-size: 35px; /* Tamaño de letra 15px */
   font-weight: bold; /* Opcional, para destacar el título */
 }
 .descripcion {
@@ -156,6 +159,7 @@
 }
 .title-font {
   font-family: 'Alfa Slab One Regular';
+  font-size: 40px; /* Tamaño de letra 15px */
 }
 
 .subtitle-font {
@@ -175,3 +179,16 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+//Buscador
+.search-container {
+  position: relative;
+}
+
+.search-results {
+  position: absolute;
+  background: white;
+  width: 100%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+//fin
