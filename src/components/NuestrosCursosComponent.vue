@@ -14,14 +14,18 @@
             <div class="col-xs-12 col-md-6">
               <q-card flat class="q-pa-md text-center bg-grey-1">
                 <q-card-section>
-                  <div class="text-h4 text-bold text-dark">GET YOUR STYLE YOU DESERVE!</div>
+                  <div class="text-h4 text-bold text-dark">¡CONSIGUE EL ESTILO QUE TE MERECES!</div>
                   <q-separator class="q-mt-md q-mb-md" />
                   <q-icon name="mdi-mustache" size="md" color="brown" class="q-mb-md" />
                   <div class="text-body1 text-grey-8">
-                    BarberShop is a professional context. It often happens that private or clients
-                    order a publication to be made and presented with the actual content still not
-                    being ready. However, reviewers tend to be distracted by content, say, a random
-                    text copied from the internet.
+                    "BarberShop es un contexto profesional donde a menudo sucede que los clientes
+                    privados o clientes ordenan una publicación que se haga y se presente sin que el
+                    contenido real esté listo. Piense en un blog de noticias que se llena de
+                    contenido cada hora el día de la publicación. Sin embargo, los revisores tienden
+                    a distraerse con el contenido, digamos, un texto aleatorio copiado de la
+                    Internet. Pero a medida que el texto alcanza su nuevo nivel y su dirección nunca
+                    deja de renderizar y crear. Los revisores tienden a enfocarse en el texto, sin
+                    considerar el diseño y sus elementos.
                   </div>
                 </q-card-section>
                 <q-card-actions align="center">
@@ -51,19 +55,13 @@
                   <div class="text-h6 q-mt-sm">Barba</div>
                   <!-- Descripción -->
                   <div class="text-body2 q-mt-sm text-white descripcion">
-                    Ritual de Barba: . . . . . . . . . . . . $300 MXN
-                    <div class="text-body2 q-mt-sm text-white">
-                      Disfruta de un corte tradicional con atención personalizada y un ambiente
-                      único.
-                    </div>
+                    ♦ Barba Clásica: . . . . . . . . . . . . $120 MXN ♦
                   </div>
                   <div class="text-body2 q-mt-sm text-white descripcion">
-                    Barba sin Ritual: . . . . . . . . . . . . $200 MXN
-                    <br />
-                    Disfruta de un corte tradicional con atención personalizada y un ambiente único.
+                    ♦ Ritual de Barba: . . . . . . . . . . . . $150 MXN ♦
                   </div>
                   <div class="text-body2 q-mt-sm text-white descripcion">
-                    Disfruta de un corte tradicional con atención personalizada y un ambiente único.
+                    ♦ Tinte de Barba: . . . . . . . . . . . . $50 MXN ♦
                   </div>
                 </q-card-section>
               </q-card>
@@ -78,8 +76,26 @@
                   <!-- Título -->
                   <div class="text-h6 q-mt-sm">Cabello</div>
                   <!-- Descripción -->
-                  <div class="text-body2 q-mt-sm text-white">
-                    Cortes modernos, afeitados y arreglos de barba para el hombre contemporáneo.
+                  <div class="text-body2 q-mt-sm text-white descripcion">
+                    ♦ Corte de Cabello: . . . . . . . . . . . . $150 MXN ♦
+                  </div>
+                  <div class="text-body2 q-mt-sm text-white descripcion">
+                    ♦ Bases: ♦ <br />
+                    (De acuerdo al largo del cabello)
+                  </div>
+                  <div class="text-body2 q-mt-sm text-white descripcion">
+                    ♦ Corte de Niño: . . . . . . . . . . . . $130 MXN ♦
+                    <br />
+                    (Menores de 13 Años)
+                  </div>
+                  <div class="text-body2 q-mt-sm text-white descripcion">
+                    ♦ Delineado de Contornos: . . . . . . $50 MXN ♦
+                  </div>
+                  <div class="text-body2 q-mt-sm text-white descripcion">
+                    ♦ Delineado de Ceja: . . . . . . . . . . . . $50 MXN ♦
+                  </div>
+                  <div class="text-body2 q-mt-sm text-white descripcion">
+                    ♦ Grecas: ♦ <br />(De acuerdo al diseño, desde $50)
                   </div>
                 </q-card-section>
               </q-card>
@@ -92,10 +108,13 @@
                   <!-- Logo -->
                   <img src="src\assets\background-images\Menu3.png" alt="Logo" class="logo-image" />
                   <!-- Título -->
-                  <div class="text-h6 q-mt-sm">Completo</div>
+                  <div class="text-h6 q-mt-sm">Rostro</div>
                   <!-- Descripción -->
-                  <div class="text-body2 q-mt-sm text-white">
-                    Reserva tu cita o haznos cualquier consulta. Estamos para atenderte.
+                  <div class="text-body2 q-mt-sm text-white descripcion">
+                    ♦ Mascarilla Negra: . . . . . . . . . . . . $50 MXN ♦
+                  </div>
+                  <div class="text-body2 q-mt-sm text-white descripcion">
+                    ♦ Mascarilla Hidratante: . . . . . . . . $50 MXN ♦
                   </div>
                 </q-card-section>
                 <!-- Para Agregar un boton -->
@@ -395,11 +414,43 @@
 
                 <h4 class="q-mt-md">DOMINGO : CERRADO</h4>
                 <p class="text-bold q-mt-md text-h6">20% DE DESCUENTO EN TU PRIMER CORTE</p>
-                <q-btn class="boton" href="" label="CLIC PARA AGENDAR UNA CITA !!!..."> </q-btn>
+                <q-btn
+                  class="boton"
+                  @click="showModal = true"
+                  label="CLIC PARA AGENDAR UNA CITA !!!..."
+                />
               </div>
             </q-page>
           </q-page-container>
         </q-layout>
+
+        <!-- Modal de Agendamiento -->
+        <q-dialog v-model="showModal">
+          <q-card class="q-pa-md">
+            <q-card-section>
+              <div class="text-h6">Agendar Cita</div>
+            </q-card-section>
+            <q-card-section>
+              <!-- Nombre del cliente -->
+              <q-input v-model="appointment.name" label="Nombre Completo" />
+
+              <!-- Selección de nombre (como servicio) -->
+              <q-select v-model="appointment.selectedName" :options="names" label="Barberos:" />
+
+              <!-- Servicio (sin cambios) -->
+              <q-select v-model="appointment.service" :options="services" label="Servicio" />
+
+              <!-- Fecha y Hora -->
+              <q-input v-model="appointment.date" type="date" label="Fecha" />
+              <q-input v-model="appointment.time" type="time" label="Hora" />
+            </q-card-section>
+            <q-card-actions align="right">
+              <q-btn flat label="Cancelar" v-close-popup />
+              <q-btn color="primary" label="Agendar" @click="scheduleAppointment" />
+              <q-btn color="secondary" label="Descargar CSV" @click="generateCSV" />
+            </q-card-actions>
+          </q-card>
+        </q-dialog>
       </section>
       <!--Final-->
     </div>
@@ -411,6 +462,7 @@ export default {
   data() {
     return {
       tab: 'tab1',
+      // Productos del primer script
       products: [
         {
           name: 'TIJERAS DE BARBERO',
@@ -433,15 +485,75 @@ export default {
           image: 'src/assets/background-images/Peine.png',
         },
       ],
+      // Horarios de trabajo
       workingHours: [
-        { day: 'LUNES', hours: '6:00 AM - 6:30 PM' },
-        { day: 'MARTES', hours: '6:00 AM - 6:30 PM' },
-        { day: 'MIERCOLES', hours: '6:00 AM - 6:30 PM' },
-        { day: 'JUEVES', hours: '6:00 AM - 6:30 PM' },
-        { day: 'VIERNES', hours: '6:00 AM - 6:30 PM' },
-        { day: 'SABADO', hours: '6:00 AM - 6:30 PM' },
+        { day: 'LUNES', hours: '11:00 AM - 8:00 PM' },
+        { day: 'MARTES', hours: '11:00 AM - 8:00 PM' },
+        { day: 'MIERCOLES', hours: '11:00 AM - 8:00 PM' },
+        { day: 'JUEVES', hours: '11:00 AM - 8:00 PM' },
+        { day: 'VIERNES', hours: '11:00 AM - 8:00 PM' },
+        { day: 'SABADO', hours: '11:00 AM - 8:00 PM' },
       ],
+      // Datos del segundo script
+      showModal: false,
+      appointment: {
+        name: '',
+        selectedName: '', // Campo para el nombre seleccionado
+        service: null,
+        date: '',
+        time: '',
+      },
+      services: [
+        'Corte de Niño ',
+        'Corte de Cabello  ',
+        'Barba Clásica ',
+        'Ritual de Barba  ',
+        'Delineado de Contornos  ',
+        'Delineado de Ceja  ',
+        'Tinte de Barba ',
+        'Grecas',
+        'Bases',
+        'Mascarilla Negra  ',
+        'Mascarilla Hidratante  ',
+      ],
+      names: ['ESMERALDA', 'PILAR', 'DARIAN'], // Lista de nombres
+      appointments: [],
     }
+  },
+  methods: {
+    // Función para agendar citas
+    scheduleAppointment() {
+      if (
+        this.appointment.name &&
+        this.appointment.selectedName &&
+        this.appointment.service &&
+        this.appointment.date &&
+        this.appointment.time
+      ) {
+        this.appointments.push({ ...this.appointment })
+        alert(
+          `Cita agendada para ${this.appointment.name} con el Barbero ${this.appointment.selectedName} el ${this.appointment.date} a las ${this.appointment.time} para ${this.appointment.service}.`,
+        )
+        this.showModal = false
+        this.appointment = { name: '', selectedName: '', service: null, date: '', time: '' } // Reiniciar el formulario
+      } else {
+        alert('Por favor, complete todos los campos.')
+      }
+    },
+    // Función para generar el CSV
+    generateCSV() {
+      let content = 'Nombre,Seleccionado Nombre,Servicio,Fecha,Hora\n' // Encabezado CSV
+      this.appointments.forEach((appt) => {
+        content += `${appt.name},${appt.selectedName},${appt.service},${appt.date},${appt.time}\n` // Datos de cada cita
+      })
+
+      const blob = new Blob([content], { type: 'text/csv' })
+      const link = document.createElement('a')
+      link.href = URL.createObjectURL(blob)
+      link.download = 'citas_agendadas.csv' // Nombre del archivo
+      link.click()
+      URL.revokeObjectURL(link.href)
+    },
   },
 }
 </script>
