@@ -2,7 +2,7 @@
   <q-header class="bg-transparent">
     <q-toolbar>
       <div class="flex items-start full-width">
-        <!--MENU-->
+        <!-- MENU -->
         <q-header elevated class="bg-white text-black">
           <q-toolbar>
             <q-btn
@@ -23,7 +23,7 @@
               />
             </q-toolbar-title>
 
-            <!-- Tabs, visible only on larger screens -->
+            <!-- Tabs visibles solo en pantallas grandes -->
             <q-tabs align="right" class="q-pa-sm" v-if="!$q.screen.xs">
               <q-tab label="INICIO" @click="scrollToSection('inicio')" />
               <q-tab label="NOSOTROS" @click="scrollToSection('Nosotros')" />
@@ -49,7 +49,6 @@
                 debounce="300"
                 @update:model-value="highlightResults"
               />
-
               <q-list v-if="filteredResults.length > 0" class="search-results">
                 <q-item
                   v-for="(result, index) in filteredResults"
@@ -68,6 +67,18 @@
       </div>
     </q-toolbar>
   </q-header>
+
+  <!-- Menú desplegable para móviles -->
+  <q-drawer v-model="leftDrawerOpen" side="left" class="bg-white">
+    <q-tabs vertical>
+      <q-tab label="INICIO" @click="scrollToSection('inicio')" />
+      <q-tab label="NOSOTROS" @click="scrollToSection('Nosotros')" />
+      <q-tab label="SERVICIOS" @click="scrollToSection('Servicios')" />
+      <q-tab label="PRODUCTOS" @click="scrollToSection('Productos')" />
+      <q-tab label="GALERÍA" @click="scrollToSection('Galeria')" />
+      <q-tab label="HORARIOS Y CITAS" @click="scrollToSection('Horarios')" />
+    </q-tabs>
+  </q-drawer>
 </template>
 
 <script>
@@ -78,6 +89,7 @@ export default {
       showSearch: false,
       searchQuery: '',
       pageElements: [], // Elementos extraídos del DOM
+      leftDrawerOpen: false, // Estado del menú desplegable
     }
   },
   computed: {
@@ -89,7 +101,6 @@ export default {
     },
   },
   methods: {
-    // Alternar la visibilidad de la barra de búsqueda
     toggleSearch() {
       this.showSearch = !this.showSearch
       if (!this.showSearch) {
@@ -97,8 +108,9 @@ export default {
         this.clearHighlights()
       }
     },
-
-    // Resaltar resultados de búsqueda
+    toggleLeftDrawer() {
+      this.leftDrawerOpen = !this.leftDrawerOpen
+    },
     highlightResults() {
       this.clearHighlights()
       if (!this.searchQuery.trim()) return
@@ -114,22 +126,18 @@ export default {
             ...document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, li, a'),
           ].filter((el) => el.textContent.toLowerCase().includes(this.searchQuery.toLowerCase()))
           elements.forEach((el) => {
-            el.style.backgroundColor = '#D2B48C' // Resaltar coincidencias
+            el.style.backgroundColor = '#D2B48C'
             el.setAttribute('data-search-highlight', 'true')
           })
         }
       })
     },
-
-    // Limpiar los resaltados de búsqueda
     clearHighlights() {
       document.querySelectorAll('[data-search-highlight]').forEach((el) => {
         el.style.backgroundColor = ''
         el.removeAttribute('data-search-highlight')
       })
     },
-
-    // Desplazar a un elemento específico de la búsqueda
     scrollToElement(text) {
       const element = [...document.querySelectorAll('h1, h2, h3, p, span, li, a')].find((el) =>
         el.textContent.toLowerCase().includes(text.toLowerCase()),
@@ -138,16 +146,13 @@ export default {
         element.scrollIntoView({ behavior: 'smooth', block: 'center' })
       }
     },
-
-    // Desplazar a una sección específica usando su ID
     scrollToSection(sectionId) {
       const section = document.getElementById(sectionId)
       if (section) {
         section.scrollIntoView({ behavior: 'smooth' })
+        this.leftDrawerOpen = false // Cerrar el menú después de hacer clic en una opción
       }
     },
-
-    // Escanear el contenido de la página para extraer los textos
     scanPageContent() {
       this.pageElements = [...document.querySelectorAll('h1, h2, h3, p, span, li, a')]
         .map((el) => el.textContent.trim())
@@ -155,7 +160,7 @@ export default {
     },
   },
   mounted() {
-    this.scanPageContent() // Escanear el contenido de la página al cargar
+    this.scanPageContent()
   },
 }
 </script>
@@ -173,7 +178,7 @@ export default {
   z-index: 1000;
 }
 
-/* Asegurar que el menú sea adecuado en pantallas pequeñas */
+/* Ajustes para móviles */
 @media (max-width: 600px) {
   .q-header {
     padding: 10px;
