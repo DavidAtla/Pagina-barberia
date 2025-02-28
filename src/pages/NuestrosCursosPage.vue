@@ -1,8 +1,6 @@
 <template>
   <q-page class="full-width">
-    <div class="q-pa-md fondo-imagen-1 container padding-por-header">
-      <h1 class="text-h6">Nuestros Cursos</h1>
-    </div>
+    <div class="q-pa-md fondo-imagen-1 container padding-por-header"></div>
 
     <DetallesCursosComponent />
   </q-page>
