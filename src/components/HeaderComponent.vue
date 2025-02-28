@@ -2,16 +2,29 @@
   <q-header class="bg-transparent">
     <q-toolbar>
       <div class="flex items-start full-width">
-        <!--MENU -->
+        <!--MENU-->
         <q-header elevated class="bg-white text-black">
           <q-toolbar>
-            <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
+            <q-btn
+              flat
+              dense
+              round
+              icon="menu"
+              aria-label="Menu"
+              @click="toggleLeftDrawer"
+              v-if="$q.screen.xs"
+            />
 
             <q-toolbar-title>
-              <img src="src/assets/background-images/logo.jpeg" class="logo" />
+              <img
+                src="src/assets/background-images/logo.jpeg"
+                style="width: 50px; height: 50px"
+                class="logo"
+              />
             </q-toolbar-title>
 
-            <q-tabs align="right" class="q-pa-sm">
+            <!-- Tabs, visible only on larger screens -->
+            <q-tabs align="right" class="q-pa-sm" v-if="!$q.screen.xs">
               <q-tab label="INICIO" @click="scrollToSection('inicio')" />
               <q-tab label="NOSOTROS" @click="scrollToSection('Nosotros')" />
               <q-tab label="SERVICIOS" @click="scrollToSection('Servicios')" />
@@ -158,5 +171,20 @@ export default {
   width: 100%;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+}
+
+/* Asegurar que el menú sea adecuado en pantallas pequeñas */
+@media (max-width: 600px) {
+  .q-header {
+    padding: 10px;
+  }
+
+  .q-toolbar {
+    justify-content: space-between;
+  }
+
+  .q-tabs {
+    display: none; /* Ocultar los tabs en pantallas pequeñas */
+  }
 }
 </style>

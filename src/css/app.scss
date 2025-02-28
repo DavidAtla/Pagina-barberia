@@ -9,11 +9,14 @@
 .padding-por-header {
   padding-top: 180px; // 150px es el tamaño del logo + 20 de padding
 }
+//imagen de fondo para que ocupe todo en pc,telefono.
 .fondo-imagen-1 {
   background-image: url('assets/background-images/barberia.jpg');
-  background-size: 100%;
-  min-height: 790px; //largo
-  background-position: bottom;
+  background-size: cover; /* Ajusta la imagen sin repetirla */
+  background-repeat: no-repeat; /* Evita la duplicación */
+  background-position: center bottom; /* Centra la imagen en la parte inferior */
+  min-height: 790px; /* Altura mínima */
+  width: 100%; /* Ocupar todo el ancho */
 }
 .Contenedor {
   // primera imagen
