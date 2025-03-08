@@ -55,7 +55,12 @@
 .logo {
   height: 50px;
 }
-
+.logo-menu {
+  height: 50px;
+  position: relative;
+  top: 100px;
+  left: 110px;
+}
 .bg-white {
   background-color: #f5f5dc !important; /* Se cambia el color de fondo a blanco */
 }
@@ -94,13 +99,6 @@
   background-size: 100%;
   min-height: auto; //largo
   background-position: bottom;
-}
-.text-h7 {
-  text-align: center;
-  font-family: 'Alfa Slab One Regular';
-  border-radius: 20px;
-  height: 70px;
-  color: rgb(0, 0, 0);
 }
 //Primera Pagina
 .q-img {
@@ -195,3 +193,9 @@
   z-index: 1000;
 }
 //fin
+// Imagenes de ventana emergente 
+.large-product-image {
+  width: 80px; /* Ajusta el tamaño según tus necesidades */
+  height: auto; /* Ajusta el tamaño según tus necesidades */
+}
+//Fin

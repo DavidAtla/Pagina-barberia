@@ -38,9 +38,8 @@
       </section>
       <!-- Final-->
       <!--Segunda-->
-
-      <q-page padding class="page-bg">
-        <section id="Servicios">
+      <section id="Servicios">
+        <q-page padding class="page-bg">
           <!-- Título Principal -->
           <div class="custom-title text-h6 text-center q-pa-md">SERVICIOS DE MENU</div>
 
@@ -92,7 +91,7 @@
                     ♦ Delineado de Contornos: . . . . . . $50 MXN ♦
                   </div>
                   <div class="text-body2 q-mt-sm text-white descripcion">
-                    ♦ Delineado de Ceja: . . . . . . . . . . . . $50 MXN ♦
+                    ♦ Delineado de Ceja: . . . . . . $50 MXN ♦
                   </div>
                   <div class="text-body2 q-mt-sm text-white descripcion">
                     ♦ Grecas: ♦ <br />(De acuerdo al diseño, desde $50)
@@ -111,7 +110,7 @@
                   <div class="text-h6 q-mt-sm">Rostro</div>
                   <!-- Descripción -->
                   <div class="text-body2 q-mt-sm text-white descripcion">
-                    ♦ Mascarilla Negra: . . . . . . . . . . . . $50 MXN ♦
+                    ♦ Mascarilla Negra: . . . . . . . . $50 MXN ♦
                   </div>
                   <div class="text-body2 q-mt-sm text-white descripcion">
                     ♦ Mascarilla Hidratante: . . . . . . . . $50 MXN ♦
@@ -124,8 +123,8 @@
               </q-card>
             </div>
           </div>
-        </section>
-      </q-page>
+        </q-page>
+      </section>
       <!--Final-->
       <!-- Tercela -->
       <!--Final-->
@@ -154,9 +153,38 @@
             </q-list>
 
             <div class="text-center q-mt-md">
-              <q-btn color="brown" label="IR AL CARITO" />
+              <q-btn color="brown" label="VER MAS PRODUCTOS" @click="showMoreProducts" />
             </div>
           </div>
+
+          <q-dialog v-model="dialog" persistent>
+            <q-card :style="{ width: '85vw', height: 'auto', maxWidth: '1200px' }">
+              <q-card-section>
+                <div class="text-h6">Más Productos</div>
+              </q-card-section>
+              <div class="row">
+                <q-item
+                  v-for="product in moreProducts"
+                  :key="product.name"
+                  class="q-pa-md col-xs-12 col-sm-6 col-md-4"
+                >
+                  <q-item-section avatar>
+                    <q-img :src="product.image" class="large-product-image" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>{{ product.name }}</q-item-label>
+                    <q-item-label caption>${{ product.price }}</q-item-label>
+                  </q-item-section>
+                  <q-item-section side>
+                    <q-btn color="brown" label="Comprar" />
+                  </q-item-section>
+                </q-item>
+              </div>
+              <q-card-actions align="right">
+                <q-btn color="brown" label="CERRAR" v-close-popup />
+              </q-card-actions>
+            </q-card>
+          </q-dialog>
         </q-page>
       </section>
       <!--Final-->
@@ -170,207 +198,16 @@
           </q-tabs>
 
           <q-tab-panels v-model="tab" animated>
-            <q-tab-panel name="tab1">
-              <q-row class="q-gutter-md q-mt-md">
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-              </q-row>
-            </q-tab-panel>
-            <q-tab-panel name="tab2">
-              <q-row class="q-gutter-md q-mt-md">
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-              </q-row>
-            </q-tab-panel>
-            <q-tab-panel name="tab2">
-              <q-row class="q-gutter-md q-mt-md">
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-              </q-row>
-            </q-tab-panel>
-            <q-tab-panel name="tab2">
-              <q-row class="q-gutter-md q-mt-md">
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-              </q-row>
-            </q-tab-panel>
-            <q-tab-panel name="tab3">
-              <q-row class="q-gutter-md q-mt-md">
-                <q-col cols="6" xs="12">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-              </q-row>
-            </q-tab-panel>
-            <q-tab-panel name="tab2">
-              <q-row class="q-gutter-md q-mt-md">
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
-                </q-col>
-                <q-col cols="12" xs="6">
-                  <q-img
-                    src="src/assets/background-images/Peine.png"
-                    style="width: 250px; height: 250px"
-                  />
+            <q-tab-panel v-for="panel in panels" :key="panel.name" :name="panel.name">
+              <q-row class="q-gutter-md q-mt-md justify-center q-md-flex-row q-sm-flex-column">
+                <q-col
+                  v-for="(image, index) in panel.images"
+                  :key="index"
+                  cols="12"
+                  xs="6"
+                  class="auto"
+                >
+                  <q-img :src="image" class="image-margin" style="width: 215px; height: 210px" />
                 </q-col>
               </q-row>
             </q-tab-panel>
@@ -462,7 +299,7 @@ export default {
   data() {
     return {
       tab: 'tab1',
-      // Productos del primer script
+      dialog: false,
       products: [
         {
           name: 'TIJERAS DE BARBERO',
@@ -485,7 +322,53 @@ export default {
           image: 'src/assets/background-images/Peine.png',
         },
       ],
-      // Horarios de trabajo
+      moreProducts: [
+        {
+          name: 'PEINES DE BARBERO PROFESIONAL',
+          price: 20.0,
+          image: 'src/assets/background-images/Tijeras.png',
+        },
+        {
+          name: 'PEINES DE BARBERO PROFESIONAL',
+          price: 25.0,
+          image: 'src/assets/background-images/Shaving-Brushs.png',
+        },
+        {
+          name: 'PEINES DE BARBERO PROFESIONAL',
+          price: 35.0,
+          image: 'src/assets/background-images/Navaja de afeitar.png',
+        },
+        {
+          name: 'PEINES DE BARBERO PROFESIONAL',
+          price: 12.0,
+          image: 'src/assets/background-images/Peine.png',
+        },
+        {
+          name: 'PEINES DE BARBERO PROFESIONAL',
+          price: 35.0,
+          image: 'src/assets/background-images/Navaja de afeitar.png',
+        },
+        {
+          name: 'PEINES DE BARBERO PROFESIONAL',
+          price: 12.0,
+          image: 'src/assets/background-images/Peine.png',
+        },
+        {
+          name: 'PEINES DE BARBERO PROFESIONAL',
+          price: 35.0,
+          image: 'src/assets/background-images/Navaja de afeitar.png',
+        },
+        {
+          name: 'PEINES DE BARBERO PROFESIONAL',
+          price: 12.0,
+          image: 'src/assets/background-images/Peine.png',
+        },
+        {
+          name: 'PEINES DE BARBERO PROFESIONAL',
+          price: 12.0,
+          image: 'src/assets/background-images/Peine.png',
+        },
+      ],
       workingHours: [
         { day: 'LUNES', hours: '11:00 AM - 8:00 PM' },
         { day: 'MARTES', hours: '11:00 AM - 8:00 PM' },
@@ -494,7 +377,6 @@ export default {
         { day: 'VIERNES', hours: '11:00 AM - 8:00 PM' },
         { day: 'SABADO', hours: '11:00 AM - 8:00 PM' },
       ],
-      // Datos del segundo script
       showModal: false,
       appointment: {
         name: '',
@@ -518,10 +400,44 @@ export default {
       ],
       names: ['ESMERALDA', 'PILAR', 'DARIAN'], // Lista de nombres
       appointments: [],
+      panels: [
+        {
+          name: 'tab1',
+          images: [
+            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/Peine.png',
+          ],
+        },
+        {
+          name: 'tab2',
+          images: [
+            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/Peine.png',
+          ],
+        },
+        {
+          name: 'tab3',
+          images: [
+            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/Peine.png',
+          ],
+        },
+      ],
     }
   },
   methods: {
-    // Función para agendar citas
+    showMoreProducts() {
+      this.dialog = true
+    },
     scheduleAppointment() {
       if (
         this.appointment.name &&
@@ -540,7 +456,6 @@ export default {
         alert('Por favor, complete todos los campos.')
       }
     },
-    // Función para generar el CSV
     generateCSV() {
       let content = 'Nombre,Seleccionado Nombre,Servicio,Fecha,Hora\n' // Encabezado CSV
       this.appointments.forEach((appt) => {
@@ -557,4 +472,12 @@ export default {
   },
 }
 </script>
-<style scoped></style>
+<style>
+.large-product-image {
+  width: 80px; /* Ajusta el tamaño según tus necesidades */
+  height: auto; /* Ajusta el tamaño según tus necesidades */
+}
+.image-margin {
+  margin: 5px; /* Ajusta el valor de margen según sea necesario */
+}
+</style>
