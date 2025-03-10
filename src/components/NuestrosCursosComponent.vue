@@ -169,7 +169,13 @@
                   class="q-pa-md col-xs-12 col-sm-6 col-md-4"
                 >
                   <q-item-section avatar>
-                    <q-img :src="product.image" class="large-product-image" />
+                    <!-- Imagen con evento de clic para abrir en zoom -->
+                    <q-img
+                      :src="product.image"
+                      class="large-product-image"
+                      @click="openZoom(product.image)"
+                      style="cursor: pointer"
+                    />
                   </q-item-section>
                   <q-item-section>
                     <q-item-label>{{ product.name }}</q-item-label>
@@ -182,6 +188,19 @@
               </div>
               <q-card-actions align="right">
                 <q-btn color="brown" label="CERRAR" v-close-popup />
+              </q-card-actions>
+            </q-card>
+          </q-dialog>
+
+          <!-- Dialog para el Zoom -->
+          <q-dialog v-model="zoomDialog" persistent>
+            <q-card :style="{ width: '80vw', height: 'auto', maxWidth: '1200px' }">
+              <q-card-section>
+                <!-- Imagen en tamaño grande cuando se hace clic -->
+                <q-img :src="zoomImage" class="zoomed-image" />
+              </q-card-section>
+              <q-card-actions align="right">
+                <q-btn color="brown" label="Cerrar Zoom" @click="zoomDialog = false" />
               </q-card-actions>
             </q-card>
           </q-dialog>
@@ -205,7 +224,7 @@
                   :key="index"
                   cols="12"
                   xs="6"
-                  class="auto"
+                  class="flex-center"
                 >
                   <q-img :src="image" class="image-margin" style="width: 215px; height: 210px" />
                 </q-col>
@@ -300,73 +319,110 @@ export default {
     return {
       tab: 'tab1',
       dialog: false,
+      zoomDialog: false,
+      zoomImage: '',
       products: [
         {
-          name: 'TIJERAS DE BARBERO',
-          price: 20.0,
-          image: 'src/assets/background-images/Tijeras.png',
+          name: 'Conbo: Tijeras de corte lisa Y Tijeras de corte',
+          price: 378.87,
+          image: 'src/assets/background-images/ComboTijeras.jpeg',
         },
         {
-          name: 'BROCHAS DE AFEITAR',
-          price: 25.0,
-          image: 'src/assets/background-images/Shaving-Brushs.png',
+          name: 'Cepillo de Barrido para Máquina (de Limpieza Negro)',
+          price: 48.75,
+          image: 'src/assets/background-images/Cepillo de barrido para máquina.jpeg',
         },
         {
-          name: 'NAVAJAS DE AFEITAR',
-          price: 35.0,
-          image: 'src/assets/background-images/Navaja de afeitar.png',
+          name: 'Porta Navajas',
+          price: 113.75,
+          image: 'src/assets/background-images/Navaja de afeitar.jpeg',
         },
         {
-          name: 'PEINES DE BARBERO PROFESIONAL',
-          price: 12.0,
-          image: 'src/assets/background-images/Peine.png',
+          name: 'Peine Flap Top KIT DE PEINES',
+          price: 81.25,
+          image: 'src/assets/background-images/Peine Flap Top KIT DE PEINES.jpeg',
         },
       ],
       moreProducts: [
         {
-          name: 'PEINES DE BARBERO PROFESIONAL',
-          price: 20.0,
-          image: 'src/assets/background-images/Tijeras.png',
+          name: 'Cepillo de barrido para cabello MADERA NATURAL',
+          price: 65,
+          image: 'src/assets/background-images/Cepillo MADERA NATURAL.jpeg',
         },
         {
-          name: 'PEINES DE BARBERO PROFESIONAL',
-          price: 25.0,
-          image: 'src/assets/background-images/Shaving-Brushs.png',
+          name: 'Atomizador',
+          price: 40.63,
+          image: 'src/assets/background-images/Atomizador.jpeg',
         },
         {
-          name: 'PEINES DE BARBERO PROFESIONAL',
-          price: 35.0,
-          image: 'src/assets/background-images/Navaja de afeitar.png',
+          name: 'Tiras para Cuello',
+          price: 162.51,
+          image: 'src/assets/background-images/Tiras para cuello.jpeg',
         },
         {
-          name: 'PEINES DE BARBERO PROFESIONAL',
-          price: 12.0,
-          image: 'src/assets/background-images/Peine.png',
+          name: 'Talco PERRON',
+          price: 74.75,
+          image: 'src/assets/background-images/Talco PERRON.jpeg',
         },
         {
-          name: 'PEINES DE BARBERO PROFESIONAL',
-          price: 35.0,
-          image: 'src/assets/background-images/Navaja de afeitar.png',
+          name: 'Polvo de peinado ROCCO',
+          price: 130.0,
+          image: 'src/assets/background-images/Polvo de peinado ROCCO.jpeg',
         },
         {
-          name: 'PEINES DE BARBERO PROFESIONAL',
-          price: 12.0,
-          image: 'src/assets/background-images/Peine.png',
+          name: 'Gel / Cera / Pomada TRIPACK',
+          price: 178.75,
+          image: 'src/assets/background-images/Gel  Cera  Pomada TRIPACK.jpeg',
         },
         {
-          name: 'PEINES DE BARBERO PROFESIONAL',
-          price: 35.0,
-          image: 'src/assets/background-images/Navaja de afeitar.png',
+          name: 'Capa para corte o Capa cubre cabello',
+          price: 292.5,
+          image: 'src/assets/background-images/Capa para corte.jpeg',
         },
         {
-          name: 'PEINES DE BARBERO PROFESIONAL',
-          price: 12.0,
-          image: 'src/assets/background-images/Peine.png',
+          name: 'Bledo NEGRO',
+          price: 73.13,
+          image: 'src/assets/background-images/Bledo NEGRO.jpeg',
         },
         {
-          name: 'PEINES DE BARBERO PROFESIONAL',
-          price: 12.0,
-          image: 'src/assets/background-images/Peine.png',
+          name: 'Shaving Gel (Gel para Afeitar)',
+          price: 138.13,
+          image: 'src/assets/background-images/gel para afeitar.jpeg',
+        },
+        {
+          name: 'Loción after shave (loción de afeitado)',
+          price: 146.25,
+          image: 'src/assets/background-images/loción de afeitado.jpeg',
+        },
+        {
+          name: 'Navajas dorco',
+          price: 146.25,
+          image: 'src/assets/background-images/Navajas dorco.jpeg',
+        },
+        {
+          name: 'Maquina de Corte Combo Clipper y Trimmer',
+          price: '2,635.55',
+          image: 'src/assets/background-images/Maquina de corte.jpeg',
+        },
+        {
+          name: 'Secadora Para Cabello',
+          price: 744.21,
+          image: 'src/assets/background-images/Secadora.jpeg',
+        },
+        {
+          name: 'Máquina Shaver',
+          price: 744.21,
+          image: 'src/assets/background-images/Máquina Shaver.jpeg',
+        },
+        {
+          name: 'Desinfectante Para Máquinas y Peine Graduado',
+          price: 178.75,
+          image: 'src/assets/background-images/desinfectante para máquinas.jpeg',
+        },
+        {
+          name: 'Cepillo para cabello DUBAI',
+          price: 56.88,
+          image: 'src/assets/background-images/Cepillo para cabello DUBAI.jpeg',
         },
       ],
       workingHours: [
@@ -380,55 +436,55 @@ export default {
       showModal: false,
       appointment: {
         name: '',
-        selectedName: '', // Campo para el nombre seleccionado
+        selectedName: '',
         service: null,
         date: '',
         time: '',
       },
       services: [
-        'Corte de Niño ',
-        'Corte de Cabello  ',
-        'Barba Clásica ',
-        'Ritual de Barba  ',
-        'Delineado de Contornos  ',
-        'Delineado de Ceja  ',
-        'Tinte de Barba ',
+        'Corte de Niño',
+        'Corte de Cabello',
+        'Barba Clásica',
+        'Ritual de Barba',
+        'Delineado de Contornos',
+        'Delineado de Ceja',
+        'Tinte de Barba',
         'Grecas',
         'Bases',
-        'Mascarilla Negra  ',
-        'Mascarilla Hidratante  ',
+        'Mascarilla Negra',
+        'Mascarilla Hidratante',
       ],
-      names: ['ESMERALDA', 'PILAR', 'DARIAN'], // Lista de nombres
+      names: ['ESMERALDA', 'PILAR', 'DARIAN'],
       appointments: [],
       panels: [
         {
           name: 'tab1',
           images: [
-            'src/assets/background-images/Peine.png',
-            'src/assets/background-images/Peine.png',
-            'src/assets/background-images/Peine.png',
-            'src/assets/background-images/Peine.png',
-            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/barberia.jpg',
+            'src/assets/background-images/barberia.jpg',
+            'src/assets/background-images/barberia.jpg',
+            'src/assets/background-images/barberia.jpg',
+            'src/assets/background-images/barberia.jpg',
           ],
         },
         {
           name: 'tab2',
           images: [
-            'src/assets/background-images/Peine.png',
-            'src/assets/background-images/Peine.png',
-            'src/assets/background-images/Peine.png',
-            'src/assets/background-images/Peine.png',
-            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/barberia.jpg',
+            'src/assets/background-images/barberia.jpg',
+            'src/assets/background-images/barberia.jpg',
+            'src/assets/background-images/barberia.jpg',
+            'src/assets/background-images/barberia.jpg',
           ],
         },
         {
           name: 'tab3',
           images: [
-            'src/assets/background-images/Peine.png',
-            'src/assets/background-images/Peine.png',
-            'src/assets/background-images/Peine.png',
-            'src/assets/background-images/Peine.png',
-            'src/assets/background-images/Peine.png',
+            'src/assets/background-images/barberia.jpg',
+            'src/assets/background-images/barberia.jpg',
+            'src/assets/background-images/barberia.jpg',
+            'src/assets/background-images/barberia.jpg',
+            'src/assets/background-images/barberia.jpg',
           ],
         },
       ],
@@ -437,6 +493,10 @@ export default {
   methods: {
     showMoreProducts() {
       this.dialog = true
+    },
+    openZoom(image) {
+      this.zoomImage = image
+      this.zoomDialog = true
     },
     scheduleAppointment() {
       if (
@@ -451,7 +511,13 @@ export default {
           `Cita agendada para ${this.appointment.name} con el Barbero ${this.appointment.selectedName} el ${this.appointment.date} a las ${this.appointment.time} para ${this.appointment.service}.`,
         )
         this.showModal = false
-        this.appointment = { name: '', selectedName: '', service: null, date: '', time: '' } // Reiniciar el formulario
+        this.appointment = {
+          name: '',
+          selectedName: '',
+          service: null,
+          date: '',
+          time: '',
+        } // Reiniciar el formulario
       } else {
         alert('Por favor, complete todos los campos.')
       }
@@ -472,6 +538,7 @@ export default {
   },
 }
 </script>
+
 <style>
 .large-product-image {
   width: 80px; /* Ajusta el tamaño según tus necesidades */
@@ -479,5 +546,10 @@ export default {
 }
 .image-margin {
   margin: 5px; /* Ajusta el valor de margen según sea necesario */
+}
+.zoomed-image {
+  max-width: 50%;
+  max-height: 100vh;
+  object-fit: contain;
 }
 </style>
