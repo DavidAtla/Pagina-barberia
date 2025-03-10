@@ -49,15 +49,15 @@
                 debounce="300"
                 @update:model-value="highlightResults"
               />
-              <q-list v-if="searchQuery.trim()" class="search-results">
-                <q-item v-if="filteredResults.length === 0">
-                  <q-item-section>Ningún resultado encontrado.</q-item-section>
+              <q-list v-if="filteredResults.length > 0" class="search-results">
+                <q-item
+                  v-for="(result, index) in filteredResults"
+                  :key="index"
+                  clickable
+                  @click="scrollToElement(result)"
+                >
+                  <q-item-section>{{ result }}</q-item-section>
                 </q-item>
-                <template v-for="(result, index) in filteredResults" :key="index">
-                  <q-item clickable @click="scrollToElement(result)">
-                    <q-item-section>{{ result }}</q-item-section>
-                  </q-item>
-                </template>
               </q-list>
             </div>
 
@@ -82,7 +82,7 @@
   </q-header>
 
   <q-drawer v-model="leftDrawerOpen" side="left" class="bg-white">
-    <q-tabs vertical align="right" class="q-pa-sm" v-if="!$q.screen.xz">
+    <q-tabs vertical>
       <q-tab label="INICIO" @click="scrollToSection('inicio')" />
       <q-tab label="NOSOTROS" @click="scrollToSection('Nosotros')" />
       <q-tab label="SERVICIOS" @click="scrollToSection('Servicios')" />
@@ -133,12 +133,12 @@ export default {
       if (!this.searchQuery.trim()) return
       this.pageElements.forEach((text) => {
         if (text.toLowerCase().includes(this.searchQuery.toLowerCase())) {
-          const elements = Array.from(
-            document.querySelectorAll('h1, h2, h3, h4, text-h4, h5, h6, p, span, li, a'),
-          ).filter((el) => el.textContent.toLowerCase().includes(this.searchQuery.toLowerCase()))
+          const elements = document.querySelectorAll('h1, h2, h3, p, span, li, a')
           elements.forEach((el) => {
-            el.style.backgroundColor = '#D2B48C'
-            el.setAttribute('data-search-highlight', 'true')
+            if (el.textContent.toLowerCase().includes(this.searchQuery.toLowerCase())) {
+              el.style.backgroundColor = '#D2B48C'
+              el.setAttribute('data-search-highlight', 'true')
+            }
           })
         }
       })
@@ -154,8 +154,8 @@ export default {
 
     // Desplazar a un elemento específico de la búsqueda
     scrollToElement(text) {
-      const element = Array.from(document.querySelectorAll('h1, h2, h3, p, span, li, a')).find(
-        (el) => el.textContent.toLowerCase().includes(text.toLowerCase()),
+      const element = [...document.querySelectorAll('h1, h2, h3, p, span, li, a')].find((el) =>
+        el.textContent.toLowerCase().includes(text.toLowerCase()),
       )
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'center' })
@@ -173,7 +173,7 @@ export default {
 
     // Escanear el contenido de la página para extraer los textos
     scanPageContent() {
-      this.pageElements = Array.from(document.querySelectorAll('h1, h2, h3, p, span, li, a'))
+      this.pageElements = [...document.querySelectorAll('h1, h2, h3, p, span, li, a')]
         .map((el) => el.textContent.trim())
         .filter((text) => text)
     },
@@ -186,3 +186,24 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.search-container {
+  position: relative;
+}
+.search-results {
+  position: absolute;
+  background: white;
+  width: 100%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+@media (max-width: 600px) {
+  .q-header {
+    padding: 10px;
+  }
+  .q-tabs {
+    display: none;
+  }
+}
+</style>
