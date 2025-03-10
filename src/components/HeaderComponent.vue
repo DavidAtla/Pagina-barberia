@@ -2,7 +2,7 @@
   <q-header class="bg-transparent">
     <q-toolbar>
       <div class="flex items-start full-width">
-        <!--MENU-->
+        <!-- MENU -->
         <q-header elevated class="bg-white text-black">
           <q-toolbar>
             <q-btn
@@ -61,20 +61,28 @@
               </q-list>
             </div>
 
-            <q-btn flat icon="shopping_cart" aria-label="Carrito" @click="toggleCartPopup" />
-            <q-dialog v-model="showCartPopup">
-              <q-card style="width: 500px; height: 550px">
-                <q-card-section>
-                  <div class="text-h6">Carrito</div>
-                </q-card-section>
-                <q-card-section>
-                  <div>Tu carrito está vacío.</div>
-                </q-card-section>
-                <q-card-actions align="right">
-                  <q-btn flat label="Cerrar" color="primary" v-close-popup />
-                </q-card-actions>
-              </q-card>
-            </q-dialog>
+            <div>
+              <q-btn flat icon="shopping_cart" aria-label="Carrito" @click="toggleCartPopup" />
+              <q-dialog v-model="showCartPopup">
+                <q-card style="width: 500px; height: 550px">
+                  <q-card-section>
+                    <div class="text-h6">Carrito</div>
+                  </q-card-section>
+                  <q-card-section v-if="cartItems.length > 0">
+                    <div v-for="item in cartItems" :key="item.id">
+                      {{ item.name }} - {{ item.price }}
+                      <q-btn flat icon="delete" @click="removeItem(item.id)" />
+                    </div>
+                  </q-card-section>
+                  <q-card-section v-else>
+                    <div>Tu carrito está vacío.</div>
+                  </q-card-section>
+                  <q-card-actions align="right">
+                    <q-btn flat label="Cerrar" color="primary" v-close-popup />
+                  </q-card-actions>
+                </q-card>
+              </q-dialog>
+            </div>
           </q-toolbar>
         </q-header>
       </div>
@@ -82,7 +90,7 @@
   </q-header>
 
   <q-drawer v-model="leftDrawerOpen" side="left" class="bg-white">
-    <q-tabs vertical align="right" class="q-pa-sm" v-if="!$q.screen.xz">
+    <q-tabs vertical align="right" class="q-pa-sm">
       <q-tab label="INICIO" @click="scrollToSection('inicio')" />
       <q-tab label="NOSOTROS" @click="scrollToSection('Nosotros')" />
       <q-tab label="SERVICIOS" @click="scrollToSection('Servicios')" />
@@ -104,9 +112,12 @@ export default {
   name: 'HeaderComponent',
   data() {
     return {
+      showCartPopup: false,
+      cartItems: [],
       showSearch: false,
       searchQuery: '',
       pageElements: [], // Elementos extraídos del DOM
+      leftDrawerOpen: false, // Estado del Drawer
     }
   },
   computed: {
@@ -167,7 +178,9 @@ export default {
       const section = document.getElementById(sectionId)
       if (section) {
         section.scrollIntoView({ behavior: 'smooth' })
-        this.leftDrawerOpen = false
+        setTimeout(() => {
+          this.leftDrawerOpen = false
+        }, 500) // Añade un retardo para asegurarte de que la navegación se complete antes de cerrar el Drawer
       }
     },
 
@@ -179,6 +192,15 @@ export default {
     },
     toggleCartPopup() {
       this.showCartPopup = !this.showCartPopup
+    },
+    toggleLeftDrawer() {
+      this.leftDrawerOpen = !this.leftDrawerOpen
+    },
+    addItemToCart(item) {
+      this.cartItems.push(item)
+    },
+    removeItem(itemId) {
+      this.cartItems = this.cartItems.filter((item) => item.id !== itemId)
     },
   },
   mounted() {
