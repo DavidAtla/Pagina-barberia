@@ -169,7 +169,11 @@
                   class="q-pa-md col-xs-12 col-sm-6 col-md-4"
                 >
                   <q-item-section avatar>
-                    <q-img :src="product.image" class="large-product-image" />
+                    <q-img
+                      :src="product.image"
+                      class="large-product-image zoom-effect"
+                      @click="openZoom(product.image)"
+                    />
                   </q-item-section>
                   <q-item-section>
                     <q-item-label>{{ product.name }}</q-item-label>
@@ -182,6 +186,18 @@
               </div>
               <q-card-actions align="right">
                 <q-btn color="brown" label="CERRAR" v-close-popup />
+              </q-card-actions>
+            </q-card>
+          </q-dialog>
+
+          <!-- Diálogo para zoom -->
+          <q-dialog v-model="zoomDialog">
+            <q-card>
+              <q-card-section class="row items-center">
+                <q-img :src="zoomImage" style="width: 100vh; height: 80vh" />
+              </q-card-section>
+              <q-card-actions align="right">
+                <q-btn color="brown" label="Cerrar" @click="zoomDialog = false" />
               </q-card-actions>
             </q-card>
           </q-dialog>
@@ -300,6 +316,8 @@ export default {
     return {
       tab: 'tab1',
       dialog: false,
+      zoomDialog: false,
+      zoomImage: '',
       products: [
         {
           name: 'TIJERAS DE BARBERO',
@@ -357,11 +375,6 @@ export default {
           name: 'PEINES DE BARBERO PROFESIONAL',
           price: 35.0,
           image: 'src/assets/background-images/Navaja de afeitar.png',
-        },
-        {
-          name: 'PEINES DE BARBERO PROFESIONAL',
-          price: 12.0,
-          image: 'src/assets/background-images/Peine.png',
         },
         {
           name: 'PEINES DE BARBERO PROFESIONAL',
@@ -438,6 +451,10 @@ export default {
     showMoreProducts() {
       this.dialog = true
     },
+    openZoom(image) {
+      this.zoomImage = image
+      this.zoomDialog = true
+    },
     scheduleAppointment() {
       if (
         this.appointment.name &&
@@ -479,5 +496,11 @@ export default {
 }
 .image-margin {
   margin: 5px; /* Ajusta el valor de margen según sea necesario */
+}
+.zoom-effect {
+  transition: transform 0.3s ease-in-out;
+}
+.zoom-effect:hover {
+  transform: scale(1.3);
 }
 </style>
