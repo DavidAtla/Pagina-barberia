@@ -169,12 +169,10 @@
                   class="q-pa-md col-xs-12 col-sm-6 col-md-4"
                 >
                   <q-item-section avatar>
-                    <!-- Imagen con evento de clic para abrir en zoom -->
                     <q-img
                       :src="product.image"
-                      class="large-product-image"
+                      class="large-product-image zoom-effect"
                       @click="openZoom(product.image)"
-                      style="cursor: pointer"
                     />
                   </q-item-section>
                   <q-item-section>
@@ -188,6 +186,18 @@
               </div>
               <q-card-actions align="right">
                 <q-btn color="brown" label="CERRAR" v-close-popup />
+              </q-card-actions>
+            </q-card>
+          </q-dialog>
+
+          <!-- Diálogo para zoom -->
+          <q-dialog v-model="zoomDialog">
+            <q-card>
+              <q-card-section class="row items-center">
+                <q-img :src="zoomImage" style="width: 100vh; height: 60vh" />
+              </q-card-section>
+              <q-card-actions align="right">
+                <q-btn color="brown" label="Cerrar" @click="zoomDialog = false" />
               </q-card-actions>
             </q-card>
           </q-dialog>
@@ -498,13 +508,7 @@ export default {
           `Cita agendada para ${this.appointment.name} con el Barbero ${this.appointment.selectedName} el ${this.appointment.date} a las ${this.appointment.time} para ${this.appointment.service}.`,
         )
         this.showModal = false
-        this.appointment = {
-          name: '',
-          selectedName: '',
-          service: null,
-          date: '',
-          time: '',
-        } // Reiniciar el formulario
+        this.appointment = { name: '', selectedName: '', service: null, date: '', time: '' } // Reiniciar el formulario
       } else {
         alert('Por favor, complete todos los campos.')
       }
@@ -533,5 +537,11 @@ export default {
 }
 .image-margin {
   margin: 5px; /* Ajusta el valor de margen según sea necesario */
+}
+.zoom-effect {
+  transition: transform 0.3s ease-in-out;
+}
+.zoom-effect:hover {
+  transform: scale(1.3);
 }
 </style>
