@@ -191,19 +191,6 @@
               </q-card-actions>
             </q-card>
           </q-dialog>
-
-          <!-- Dialog para el Zoom -->
-          <q-dialog v-model="zoomDialog" persistent>
-            <q-card :style="{ width: '80vw', height: 'auto', maxWidth: '1200px' }">
-              <q-card-section>
-                <!-- Imagen en tamaño grande cuando se hace clic -->
-                <q-img :src="zoomImage" class="zoomed-image" />
-              </q-card-section>
-              <q-card-actions align="right">
-                <q-btn color="brown" label="Cerrar Zoom" @click="zoomDialog = false" />
-              </q-card-actions>
-            </q-card>
-          </q-dialog>
         </q-page>
       </section>
       <!--Final-->
@@ -546,10 +533,5 @@ export default {
 }
 .image-margin {
   margin: 5px; /* Ajusta el valor de margen según sea necesario */
-}
-.zoomed-image {
-  max-width: 50%;
-  max-height: 100vh;
-  object-fit: contain;
 }
 </style>
