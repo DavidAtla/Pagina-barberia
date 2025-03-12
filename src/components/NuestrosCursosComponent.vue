@@ -194,9 +194,9 @@
           <q-dialog v-model="zoomDialog">
             <q-card>
               <q-card-section class="row items-center">
-                <q-img :src="zoomImage" style="width: 100vh; height: 60vh" />
+                <q-img :src="zoomImage" style="width: 100vh; height: 65vh; object-fit: contain" />
               </q-card-section>
-              <q-card-actions align="right">
+              <q-card-actions align="center">
                 <q-btn color="brown" label="Cerrar" @click="zoomDialog = false" />
               </q-card-actions>
             </q-card>
@@ -215,17 +215,16 @@
 
           <q-tab-panels v-model="tab" animated>
             <q-tab-panel v-for="panel in panels" :key="panel.name" :name="panel.name">
-              <q-row class="q-gutter-md q-mt-md justify-center q-md-flex-row q-sm-flex-column">
-                <q-col
-                  v-for="(image, index) in panel.images"
-                  :key="index"
-                  cols="12"
-                  xs="6"
-                  class="flex-center"
-                >
-                  <q-img :src="image" class="image-margin" style="width: 215px; height: 210px" />
-                </q-col>
-              </q-row>
+              <div class="image-container">
+                <div class="image-slider">
+                  <q-img
+                    v-for="(image, index) in [...panel.images, ...panel.images]"
+                    :key="index"
+                    :src="image"
+                    class="image-style"
+                  />
+                </div>
+              </div>
             </q-tab-panel>
           </q-tab-panels>
         </div>
@@ -320,21 +319,25 @@ export default {
       zoomImage: '',
       products: [
         {
+          id: 1,
           name: 'Conbo: Tijeras de corte lisa Y Tijeras de corte',
           price: 378.87,
           image: 'src/assets/background-images/ComboTijeras.jpeg',
         },
         {
+          id: 2,
           name: 'Cepillo de Barrido para Máquina (de Limpieza Negro)',
           price: 48.75,
           image: 'src/assets/background-images/Cepillo de barrido para máquina.jpeg',
         },
         {
+          id: 3,
           name: 'Porta Navajas',
           price: 113.75,
           image: 'src/assets/background-images/Navaja de afeitar.jpeg',
         },
         {
+          id: 4,
           name: 'Peine Flap Top KIT DE PEINES',
           price: 81.25,
           image: 'src/assets/background-images/Peine Flap Top KIT DE PEINES.jpeg',
@@ -342,81 +345,97 @@ export default {
       ],
       moreProducts: [
         {
+          id: 5,
           name: 'Cepillo de barrido para cabello MADERA NATURAL',
           price: 65,
           image: 'src/assets/background-images/Cepillo MADERA NATURAL.jpeg',
         },
         {
+          id: 6,
           name: 'Atomizador',
           price: 40.63,
           image: 'src/assets/background-images/Atomizador.jpeg',
         },
         {
+          id: 7,
           name: 'Tiras para Cuello',
           price: 162.51,
           image: 'src/assets/background-images/Tiras para cuello.jpeg',
         },
         {
+          id: 8,
           name: 'Talco PERRON',
           price: 74.75,
           image: 'src/assets/background-images/Talco PERRON.jpeg',
         },
         {
+          id: 9,
           name: 'Polvo de peinado ROCCO',
           price: 130.0,
           image: 'src/assets/background-images/Polvo de peinado ROCCO.jpeg',
         },
         {
+          id: 10,
           name: 'Gel / Cera / Pomada TRIPACK',
           price: 178.75,
           image: 'src/assets/background-images/Gel  Cera  Pomada TRIPACK.jpeg',
         },
         {
+          id: 11,
           name: 'Capa para corte o Capa cubre cabello',
           price: 292.5,
           image: 'src/assets/background-images/Capa para corte.jpeg',
         },
         {
+          id: 12,
           name: 'Bledo NEGRO',
           price: 73.13,
           image: 'src/assets/background-images/Bledo NEGRO.jpeg',
         },
         {
+          id: 13,
           name: 'Shaving Gel (Gel para Afeitar)',
           price: 138.13,
           image: 'src/assets/background-images/gel para afeitar.jpeg',
         },
         {
+          id: 14,
           name: 'Loción after shave (loción de afeitado)',
           price: 146.25,
           image: 'src/assets/background-images/loción de afeitado.jpeg',
         },
         {
+          id: 15,
           name: 'Navajas dorco',
           price: 146.25,
           image: 'src/assets/background-images/Navajas dorco.jpeg',
         },
         {
+          id: 16,
           name: 'Maquina de Corte Combo Clipper y Trimmer',
           price: '2,635.55',
           image: 'src/assets/background-images/Maquina de corte.jpeg',
         },
         {
+          id: 17,
           name: 'Secadora Para Cabello',
           price: 744.21,
           image: 'src/assets/background-images/Secadora.jpeg',
         },
         {
+          id: 18,
           name: 'Máquina Shaver',
           price: 744.21,
           image: 'src/assets/background-images/Máquina Shaver.jpeg',
         },
         {
+          id: 19,
           name: 'Desinfectante Para Máquinas y Peine Graduado',
           price: 178.75,
           image: 'src/assets/background-images/desinfectante para máquinas.jpeg',
         },
         {
+          id: 20,
           name: 'Cepillo para cabello DUBAI',
           price: 56.88,
           image: 'src/assets/background-images/Cepillo para cabello DUBAI.jpeg',
@@ -543,5 +562,31 @@ export default {
 }
 .zoom-effect:hover {
   transform: scale(1.3);
+}
+.image-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-slider {
+  display: flex;
+  width: max-content;
+  animation: scroll 10s linear infinite;
+}
+
+.image-style {
+  width: 280px;
+  height: 150px;
+  margin-right: 2px;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-11%);
+  }
 }
 </style>

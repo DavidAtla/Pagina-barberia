@@ -175,13 +175,16 @@ export default {
 
     // Desplazar a una sección específica usando su ID
     scrollToSection(sectionId) {
-      const section = document.getElementById(sectionId)
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' })
+      this.leftDrawerOpen = false // Cierra el Drawer inmediatamente
+
+      this.$nextTick(() => {
         setTimeout(() => {
-          this.leftDrawerOpen = false
-        }, 500) // Añade un retardo para asegurarte de que la navegación se complete antes de cerrar el Drawer
-      }
+          const section = document.getElementById(sectionId)
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth' })
+          }
+        }, 300) // Pequeño retraso para evitar interrupciones visuales
+      })
     },
 
     // Escanear el contenido de la página para extraer los textos
@@ -194,7 +197,7 @@ export default {
       this.showCartPopup = !this.showCartPopup
     },
     toggleLeftDrawer() {
-      this.leftDrawerOpen = !this.leftDrawerOpen
+      this.leftDrawerOpen = !this.leftDrawerOpen // Alterna el estado del Drawer
     },
     addItemToCart(item) {
       this.cartItems.push(item)
