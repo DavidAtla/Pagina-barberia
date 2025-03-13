@@ -524,7 +524,7 @@ export default {
       ) {
         this.appointments.push({ ...this.appointment })
         alert(
-          `Cita agendada para ${this.appointment.name} con el Barbero ${this.appointment.selectedName} el ${this.appointment.date} a las ${this.appointment.time} para ${this.appointment.service}.`,
+          `Cita agendada para ${this.appointment.name} con el Barbero ${this.appointment.selectedName} el ${this.appointment.date} a las ${this.appointment.time} para ${this.appointment.service}.`
         )
         this.showModal = false
         this.appointment = { name: '', selectedName: '', service: null, date: '', time: '' } // Reiniciar el formulario
