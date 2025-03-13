@@ -124,7 +124,7 @@ export default {
     filteredResults() {
       if (!this.searchQuery.trim()) return []
       return this.pageElements.filter((text) =>
-        text.toLowerCase().includes(this.searchQuery.toLowerCase()),
+        text.toLowerCase().includes(this.searchQuery.toLowerCase())
       )
     },
   },
@@ -145,7 +145,7 @@ export default {
       this.pageElements.forEach((text) => {
         if (text.toLowerCase().includes(this.searchQuery.toLowerCase())) {
           const elements = Array.from(
-            document.querySelectorAll('h1, h2, h3, h4, text-h4, h5, h6, p, span, li, a'),
+            document.querySelectorAll('h1, h2, h3, h4, text-h4, h5, h6, p, span, li, a')
           ).filter((el) => el.textContent.toLowerCase().includes(this.searchQuery.toLowerCase()))
           elements.forEach((el) => {
             el.style.backgroundColor = '#D2B48C'
@@ -166,7 +166,7 @@ export default {
     // Desplazar a un elemento específico de la búsqueda
     scrollToElement(text) {
       const element = Array.from(document.querySelectorAll('h1, h2, h3, p, span, li, a')).find(
-        (el) => el.textContent.toLowerCase().includes(text.toLowerCase()),
+        (el) => el.textContent.toLowerCase().includes(text.toLowerCase())
       )
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'center' })
